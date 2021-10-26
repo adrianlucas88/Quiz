@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Italianno&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <title>Adrian Lucas</title>
+  </head>
+  <body>
+    <div class="container" id="projects">
+      <p class="advert">More apps are coming soon!</p>
+      <div class="project_window" id="project_container">
+        <span class="close" onclick="closeProjects()">&times;</span>
+        <span
+          class="project_window__span animate__animated animate__bounceIn"
+          id="quiz_window"
+        >
+          <h2 class="quiz__question" id="quiz-question">Pick a Category</h2>
+          <ul class="quiz__answers-container">
+            <button class="answer"></button>
+            <button class="answer"></button>
+            <button class="answer"></button>
+            <button class="answer"></button>
+            <img id="sparkle" src="./Images/completed.png" />
+          </ul>
+        </span>
+      </div>
+      <button class="project_button" id="quiz" onclick="quiz()">Quiz</button>
+    </div>
+    <script src="./Js files/quiz.js"></script>
+  </body>
+</html>
