@@ -16,7 +16,7 @@ const quizCat = ["Science", "Informatics", "General", "History"];
 function quiz() {
   projectContainer.style.display = "block";
   quizWindow.style.visibility = "visible";
-  qImage.style.height = "0";
+  qImage.style.visibility = "hidden";
   qQuestion.innerHTML = "Pick a Category";
   qAnswer.forEach((element) => (element.style.display = "inline-flex"));
   userPoints = 0;
@@ -40,13 +40,27 @@ function pickAnswer(event) {
     qQuestion.textContent = Informatics.quest1.question;
     showAnswers(Informatics.quest1.answer);
   }
+  if (butClick === quizCat[2]) {
+    qQuestion.textContent = General.quest1.question;
+    showAnswers(General.quest1.answer);
+  }
+  if (butClick === quizCat[3]) {
+    qQuestion.textContent = History.quest1.question;
+    showAnswers(History.quest1.answer);
+  }
   if (
     butClick === Science.quest1.correct ||
     butClick === Science.quest2.correct ||
     butClick === Science.quest3.correct ||
     butClick === Informatics.quest1.correct ||
     butClick === Informatics.quest2.correct ||
-    butClick === Informatics.quest3.correct
+    butClick === Informatics.quest3.correct ||
+    butClick === General.quest1.correct ||
+    butClick === General.quest2.correct ||
+    butClick === General.quest3.correct ||
+    butClick === History.quest1.correct ||
+    butClick === History.quest2.correct ||
+    butClick === History.quest3.correct
   ) {
     userPoints = userPoints + 1;
   }
@@ -77,7 +91,6 @@ function endScreen() {
   qQuestion.innerHTML = `Your Score is: ${userPoints}/3`;
   qAnswer.forEach((element) => (element.style.display = "none"));
   qImage.style.height = "15rem";
-
   console.log("end");
 }
 
