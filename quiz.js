@@ -9,14 +9,13 @@ function closeProjects() {
   projectContainer.style.display = "none";
   quizWindow.style.visibility = "hidden";
   location.reload();
-  question;
 }
 
 let butClick, userPoints;
 const quizCat = ["Science", "Informatics", "General", "History"];
 
 function quiz() {
-  projectContainer.style.display = "block";
+  projectContainer.style.display = "flex";
   quizWindow.style.visibility = "visible";
   qImage.style.height = "0";
   qQuestion.innerHTML = "Pick a Category";
