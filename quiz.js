@@ -8,6 +8,8 @@ let projectContainer = document.getElementById("project_container");
 function closeProjects() {
   projectContainer.style.display = "none";
   quizWindow.style.visibility = "hidden";
+  location.reload();
+  question;
 }
 
 let butClick, userPoints;
@@ -16,7 +18,7 @@ const quizCat = ["Science", "Informatics", "General", "History"];
 function quiz() {
   projectContainer.style.display = "block";
   quizWindow.style.visibility = "visible";
-  qImage.style.visibility = "hidden";
+  qImage.style.height = "0";
   qQuestion.innerHTML = "Pick a Category";
   qAnswer.forEach((element) => (element.style.display = "inline-flex"));
   userPoints = 0;
@@ -25,7 +27,33 @@ function quiz() {
 function showAnswers(source) {
   for (let i = 0; i < qAnswer.length; i++) {
     qAnswer[i].innerHTML = source[i];
-    qAnswer[i].addEventListener("click", pickAnswer);
+    if (qQuestion.innerHTML === "Pick a Category") {
+      qAnswer[i].addEventListener("click", pickAnswer);
+    }
+    if (
+      qQuestion.textContent === Science.quest1.question ||
+      qQuestion.textContent === Informatics.quest1.question ||
+      qQuestion.textContent === General.quest1.question ||
+      qQuestion.textContent === History.quest1.question
+    ) {
+      qAnswer[i].addEventListener("click", goQuest2);
+    }
+    if (
+      qQuestion.textContent === Science.quest2.question ||
+      qQuestion.textContent === Informatics.quest2.question ||
+      qQuestion.textContent === General.quest2.question ||
+      qQuestion.textContent === History.quest2.question
+    ) {
+      qAnswer[i].addEventListener("click", goQuest3);
+    }
+    if (
+      qQuestion.textContent === Science.quest3.question ||
+      qQuestion.textContent === Informatics.quest3.question ||
+      qQuestion.textContent === General.quest3.question ||
+      qQuestion.textContent === History.quest3.question
+    ) {
+      qAnswer[i].addEventListener("click", endScreen);
+    }
   }
 }
 function pickAnswer(event) {
@@ -70,10 +98,17 @@ function goQuest2() {
     qQuestion.textContent = Science.quest2.question;
     showAnswers(Science.quest2.answer);
   }
-
   if (qQuestion.textContent === Informatics.quest1.question) {
     qQuestion.textContent = Informatics.quest2.question;
     showAnswers(Informatics.quest2.answer);
+  }
+  if (qQuestion.textContent === General.quest1.question) {
+    qQuestion.textContent = General.quest2.question;
+    showAnswers(General.quest2.answer);
+  }
+  if (qQuestion.textContent === History.quest1.question) {
+    qQuestion.textContent = History.quest2.question;
+    showAnswers(History.quest2.answer);
   }
 }
 function goQuest3() {
@@ -85,12 +120,20 @@ function goQuest3() {
     qQuestion.textContent = Informatics.quest3.question;
     showAnswers(Informatics.quest3.answer);
   }
+  if (qQuestion.textContent === General.quest2.question) {
+    qQuestion.textContent = General.quest3.question;
+    showAnswers(General.quest3.answer);
+  }
+  if (qQuestion.textContent === History.quest2.question) {
+    qQuestion.textContent = History.quest3.question;
+    showAnswers(History.quest3.answer);
+  }
 }
 
 function endScreen() {
   qQuestion.innerHTML = `Your Score is: ${userPoints}/3`;
   qAnswer.forEach((element) => (element.style.display = "none"));
-  qImage.style.height = "15rem";
+  qImage.style.height = "20rem";
   console.log("end");
 }
 
