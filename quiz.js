@@ -7,7 +7,6 @@ let projectContainer = document.getElementById("project_container");
 
 function closeProjects() {
   projectContainer.style.display = "none";
-  tictactoeContainer.style.display = "none";
   quizWindow.style.visibility = "hidden";
 }
 
@@ -17,7 +16,6 @@ const quizCat = ["Science", "Informatics", "General", "History"];
 function quiz() {
   projectContainer.style.display = "block";
   quizWindow.style.visibility = "visible";
-  tictacRestart.style.visibility = "hidden";
   qImage.style.height = "0";
   qQuestion.innerHTML = "Pick a Category";
   qAnswer.forEach((element) => (element.style.display = "inline-flex"));
