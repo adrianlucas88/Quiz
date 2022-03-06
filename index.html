@@ -14,23 +14,31 @@
     <title>Adrian Lucas</title>
   </head>
   <body>
+    <!--Create a container for the whole App so it can be managed easier and doesn't influence the App-->
     <div class="container" id="projects">
+      <!--Create a container that holds the App elements-->
       <div class="project_window" id="project_container">
+        <!--This is the button that's closing and reseting the App-->
         <span class="close" onclick="closeProjects()">&times;</span>
+        <!--The App window that comes with a bounce animation from Animate.css(animate.style website)-->
         <span
           class="project_window__span animate__animated animate__bounceIn"
           id="quiz_window"
         >
+          <!--The App window has been split in two sections. The top will hold the question and the bottom will hold the answers-->
           <h2 class="quiz__question" id="quiz-question">Pick a Category</h2>
+          <!--An unordered list that holds 4 buttons for 4 choices of answers-->
           <ul class="quiz__answers-container">
             <button class="answer"></button>
             <button class="answer"></button>
             <button class="answer"></button>
             <button class="answer"></button>
+            <!--Image at the end of the quiz-->
             <img id="sparkle" src="./completed.png" />
           </ul>
         </span>
       </div>
+      <!--The button which starts the quiz-->
       <button class="project_button" id="quiz" onclick="quiz()">Quiz</button>
     </div>
     <script src="./quiz.js"></script>

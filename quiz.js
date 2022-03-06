@@ -5,6 +5,7 @@ let qImage = document.getElementById("sparkle");
 let quizBtn = document.getElementById("quiz");
 let projectContainer = document.getElementById("project_container");
 
+//A function which will reload the page and hide the window
 function closeProjects() {
   projectContainer.style.display = "none";
   quizWindow.style.visibility = "hidden";
@@ -12,8 +13,9 @@ function closeProjects() {
 }
 
 let butClick, userPoints;
+// An array that holds the Quiz Categories
 const quizCat = ["Science", "Informatics", "General", "History"];
-
+// A main function which will control the whole app when is triggered
 function quiz() {
   projectContainer.style.display = "flex";
   quizWindow.style.visibility = "visible";
@@ -23,18 +25,24 @@ function quiz() {
   userPoints = 0;
   showAnswers(quizCat);
 }
+// This is the function that fills the right answers for each categorie and each click will send you to the next question
 function showAnswers(source) {
   for (let i = 0; i < qAnswer.length; i++) {
+    // Fill answers with the array
     qAnswer[i].innerHTML = source[i];
+    // Check if you're at the start
     if (qQuestion.innerHTML === "Pick a Category") {
+      // Add click functionality to each button and trigger the next function
       qAnswer[i].addEventListener("click", pickAnswer);
     }
+    // Check the categorie and the question
     if (
       qQuestion.textContent === Science.quest1.question ||
       qQuestion.textContent === Informatics.quest1.question ||
       qQuestion.textContent === General.quest1.question ||
       qQuestion.textContent === History.quest1.question
     ) {
+      // Add new click functionality to each button and trigger the next function
       qAnswer[i].addEventListener("click", goQuest2);
     }
     if (
@@ -43,6 +51,7 @@ function showAnswers(source) {
       qQuestion.textContent === General.quest2.question ||
       qQuestion.textContent === History.quest2.question
     ) {
+      // Add new click functionality to each button and trigger the next function
       qAnswer[i].addEventListener("click", goQuest3);
     }
     if (
@@ -51,16 +60,17 @@ function showAnswers(source) {
       qQuestion.textContent === General.quest3.question ||
       qQuestion.textContent === History.quest3.question
     ) {
+      // Add new click functionality to each button and trigger the next function
       qAnswer[i].addEventListener("click", endScreen);
     }
   }
 }
+// A function that will check the value of the clicked button and fill the question and answers accordingly
 function pickAnswer(event) {
   butClick = event.target.innerHTML;
   if (butClick === quizCat[0]) {
     qQuestion.textContent = Science.quest1.question;
     showAnswers(Science.quest1.answer);
-    console.log("first");
   }
 
   if (butClick === quizCat[1]) {
@@ -75,6 +85,7 @@ function pickAnswer(event) {
     qQuestion.textContent = History.quest1.question;
     showAnswers(History.quest1.answer);
   }
+  // Add points for each correct answer clicked
   if (
     butClick === Science.quest1.correct ||
     butClick === Science.quest2.correct ||
@@ -92,6 +103,7 @@ function pickAnswer(event) {
     userPoints = userPoints + 1;
   }
 }
+// A function which will fill the the question and answers values with the second property of the selected Object
 function goQuest2() {
   if (qQuestion.textContent === Science.quest1.question) {
     qQuestion.textContent = Science.quest2.question;
@@ -110,6 +122,7 @@ function goQuest2() {
     showAnswers(History.quest2.answer);
   }
 }
+// A function which will fill the the question and answers values with the third property of the selected Object
 function goQuest3() {
   if (qQuestion.textContent === Science.quest2.question) {
     qQuestion.textContent = Science.quest3.question;
@@ -128,14 +141,13 @@ function goQuest3() {
     showAnswers(History.quest3.answer);
   }
 }
-
+// A function which will show the progress and replace the answers list with an image
 function endScreen() {
   qQuestion.innerHTML = `Your Score is: ${userPoints}/3`;
   qAnswer.forEach((element) => (element.style.display = "none"));
   qImage.style.height = "20rem";
-  console.log("end");
 }
-
+// An Object that holds three other Objects with the values for each question, answer and correct answer
 const Science = {
   quest1: {
     question: "What color is cobalt?",
